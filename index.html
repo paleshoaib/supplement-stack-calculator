@@ -1,294 +1,269 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.5">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1">  &lt;meta charset="UTF-8" /&gt;</p>
-<p class="p1">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</p>
-<p class="p1">  &lt;title&gt;Supplement Stack Calculator&lt;/title&gt;</p>
-<p class="p1">  &lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</p>
-<p class="p1">  &lt;link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;display=swap"&gt;</p>
-<p class="p1">  &lt;style&gt;</p>
-<p class="p1">    /* Paste your entire CSS here */</p>
-<p class="p1">/* Custom Container Styling */</p>
-<p class="p1">  .custom-calculator-container {</p>
-<p class="p1">    background-color: #101010;</p>
-<p class="p1">    color: #fff;</p>
-<p class="p1">    padding: 10px;</p>
-<p class="p1">    border-radius: 15px;</p>
-<p class="p1">    border: 1px solid #333;</p>
-<p class="p1">    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Title */</p>
-<p class="p1">  .custom-title {</p>
-<p class="p1">    text-align: center;</p>
-<p class="p1">    font-size: 32px;</p>
-<p class="p1">    margin-bottom: 20px;</p>
-<p class="p1">    font-family: 'Prestige', sans-serif; /* Matches theme font */</p>
-<p class="p1">    color: #ff5722; /* Accent color */</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Form Styling */</p>
-<p class="p1">  .custom-form {</p>
-<p class="p1">    margin-top: 20px;</p>
-<p class="p1">    display: flex;</p>
-<p class="p1">    flex-direction: column;</p>
-<p class="p1">    justify-content: center;</p>
-<p class="p1">    align-items: center;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  .custom-label {</p>
-<p class="p1">    font-size: 16px;</p>
-<p class="p1">    margin-bottom: 10px;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  .custom-select {</p>
-<p class="p1">    padding: 0.75rem;</p>
-<p class="p1">    border-radius: 5px;</p>
-<p class="p1">    font-size: 16px;</p>
-<p class="p1">    margin: 10px 0;</p>
-<p class="p1">    width: 100%;</p>
-<p class="p1">    max-width: 400px;</p>
-<p class="p1">    background-color: #333;</p>
-<p class="p1">    color: #fff;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Button Styling */</p>
-<p class="p1">  .custom-btn {</p>
-<p class="p1">    background-color: #ff5722;</p>
-<p class="p1">    color: #fff;</p>
-<p class="p1">    font-size: 14px;</p>
-<p class="p1">    font-weight: normal;</p>
-<p class="p1">    padding: 8px 20px;</p>
-<p class="p1">    border-radius: 5px;</p>
-<p class="p1">    transition: background-color 0.3s ease;</p>
-<p class="p1">    border: none;</p>
-<p class="p1">    width: 100%;</p>
-<p class="p1">    max-width: 400px;</p>
-<p class="p1">    margin-top: 10px;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  .custom-btn:hover {</p>
-<p class="p1">    background-color: #e64a19;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Results Section */</p>
-<p class="p1">  .custom-results {</p>
-<p class="p1">    margin-top: 20px;</p>
-<p class="p1">    padding: 15px;</p>
-<p class="p1">    background-color: #222;</p>
-<p class="p1">    border-radius: 8px;</p>
-<p class="p1">    border: 1px solid #444;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  .supplement-info {</p>
-<p class="p1">    margin-bottom: 15px;</p>
-<p class="p1">    padding: 10px;</p>
-<p class="p1">    border-radius: 8px;</p>
-<p class="p1">    background-color: #333;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  .supplement-info h3 {</p>
-<p class="p1">    margin-bottom: 10px;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  .supplement-info p {</p>
-<p class="p1">    margin: 5px 0;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Ensure buttons are inside their div containers */</p>
-<p class="p1">  .buy-button {</p>
-<p class="p1">    display: inline-block;</p>
-<p class="p1">    margin-top: 10px;</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Mobile Friendly: Stack the form elements vertically */</p>
-<p class="p1">  @media screen and (max-width: 768px) {</p>
-<p class="p1">    .custom-form {</p>
-<p class="p1">      width: 100%;</p>
-<p class="p1">      padding: 0 15px;</p>
-<p class="p1">    }</p>
-<p class="p2"><br></p>
-<p class="p1">    .custom-select,</p>
-<p class="p1">    .custom-btn {</p>
-<p class="p1">      width: 100%; /* Ensures full width */</p>
-<p class="p1">    }</p>
-<p class="p1">  }</p>
-<p class="p2"><br></p>
-<p class="p1">  /* Menu Color and Custom Styling (for Mobile &amp; Desktop) */</p>
-<p class="p1">  @media screen and (max-width: 768px) {</p>
-<p class="p1">    .site-header {</p>
-<p class="p1">      background-color: #101010; /* Dark header for mobile */</p>
-<p class="p1">    }</p>
-<p class="p2"><br></p>
-<p class="p1">    .site-nav__link {</p>
-<p class="p1">      color: #ff5722; /* Custom accent color for links */</p>
-<p class="p1">    }</p>
-<p class="p2"><br></p>
-<p class="p1">    .site-header .site-announcement {</p>
-<p class="p1">      background-color: #333; /* Announcement bar background */</p>
-<p class="p1">      color: #ff5722; /* Announcement text color */</p>
-<p class="p1">      font-size: 14px;</p>
-<p class="p1">      text-align: center;</p>
-<p class="p1">      padding: 10px;</p>
-<p class="p1">    }</p>
-<p class="p1">  }</p>
-<p class="p1">  &lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1">  &lt;div id="calculator-container" class="custom-calculator-container"&gt;</p>
-<p class="p1">    &lt;h1 class="custom-title"&gt;Supplement Stack Calculator&lt;/h1&gt;</p>
-<p class="p1">    &lt;form id="stackForm" class="custom-form"&gt;</p>
-<p class="p1">      &lt;label for="stack" class="custom-label"&gt;Choose your supplement stack:&lt;/label&gt;</p>
-<p class="p1">      &lt;select id="stack" class="custom-select"&gt;</p>
-<p class="p1">        &lt;option value="muscleBuilding"&gt;Muscle Building&lt;/option&gt;</p>
-<p class="p1">        &lt;option value="fatBurning"&gt;Fat Burning&lt;/option&gt;</p>
-<p class="p1">        &lt;option value="ultimateHydration"&gt;Ultimate Hydration&lt;/option&gt;</p>
-<p class="p1">      &lt;/select&gt;</p>
-<p class="p1">      &lt;button type="submit" class="custom-btn custom-btn-primary"&gt;Get Stack&lt;/button&gt;</p>
-<p class="p1">    &lt;/form&gt;</p>
-<p class="p1">    &lt;div id="results" class="custom-results"&gt;&lt;/div&gt;</p>
-<p class="p1">  &lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">  &lt;script&gt;</p>
-<p class="p1">    // Paste your entire JS here</p>
-<p class="p2"><br></p>
-<p class="p1">const supplementStacks = {</p>
-<p class="p1">  muscleBuilding: [</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Surge Pre-Workout", </p>
-<p class="p1">      dosage: "1 scoop", </p>
-<p class="p1">      timing: "Pre-workout", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/surge-pre-workout-by-stealthlabz",  // Correct link</p>
-<p class="p1">      description: "Boost energy, endurance, and focus with Surge Pre-Workout.",</p>
-<p class="p1">      ingredients: "Caffeine, Beta-Alanine, Creatine"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Elevate", </p>
-<p class="p1">      dosage: "20-30g", </p>
-<p class="p1">      timing: "Post-workout", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/elevate",  // Correct link</p>
-<p class="p1">      description: "High-quality whey protein isolate to promote muscle recovery and growth.",</p>
-<p class="p1">      ingredients: "Whey Protein Isolate"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Iso Pro", </p>
-<p class="p1">      dosage: "1 scoop (20-25g)", </p>
-<p class="p1">      timing: "Post-workout or as a meal supplement", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/iso-pro",  // Correct link</p>
-<p class="p1">      description: "Premium protein isolate for muscle recovery and lean muscle growth.",</p>
-<p class="p1">      ingredients: "Whey Protein Isolate, BCAAs"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Muscle Building Stack", </p>
-<p class="p1">      dosage: "All-in-one bundle", </p>
-<p class="p1">      timing: "Any time", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/muscle-building-stack",  // Correct link</p>
-<p class="p1">      description: "The ultimate muscle-building stack including pre-workout, protein, and more. **Get 14% off when you purchase the full stack!**",</p>
-<p class="p1">      ingredients: "Surge Pre-Workout, Elevate, Iso Pro"</p>
-<p class="p1">    }</p>
-<p class="p1">  ],</p>
-<p class="p1">  fatBurning: [</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Elevate", </p>
-<p class="p1">      dosage: "20-30g", </p>
-<p class="p1">      timing: "Post-workout", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/elevate",  // Correct link</p>
-<p class="p1">      description: "Whey protein isolate to help with fat loss and muscle preservation.",</p>
-<p class="p1">      ingredients: "Whey Protein Isolate"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Shred", </p>
-<p class="p1">      dosage: "1 capsule", </p>
-<p class="p1">      timing: "Before workouts", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/shred",  // Correct link</p>
-<p class="p1">      description: "Fat-burning thermogenic to boost metabolism and accelerate fat loss.",</p>
-<p class="p1">      ingredients: "Caffeine, Green Tea Extract, Yohimbine"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Iso Pro", </p>
-<p class="p1">      dosage: "1 scoop (20-25g)", </p>
-<p class="p1">      timing: "Post-workout or as a meal supplement", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/iso-pro",  // Correct link</p>
-<p class="p1">      description: "Premium protein isolate for muscle recovery and lean muscle growth.",</p>
-<p class="p1">      ingredients: "Whey Protein Isolate, BCAAs"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Fat Burning Stack", </p>
-<p class="p1">      dosage: "All-in-one bundle", </p>
-<p class="p1">      timing: "Any time", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/fat-burning-stack",  // Correct link</p>
-<p class="p1">      description: "Complete fat-burning stack to boost metabolism and reduce fat. **Get 14% off when you purchase the full stack!**",</p>
-<p class="p1">      ingredients: "Elevate, Shred, Iso Pro"</p>
-<p class="p1">    }</p>
-<p class="p1">  ],</p>
-<p class="p1">  ultimateHydration: [</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Elevate", </p>
-<p class="p1">      dosage: "20-30g", </p>
-<p class="p1">      timing: "Post-workout", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/elevate",  // Correct link</p>
-<p class="p1">      description: "Whey protein isolate to assist with hydration and muscle recovery.",</p>
-<p class="p1">      ingredients: "Whey Protein Isolate"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Lytes", </p>
-<p class="p1">      dosage: "As needed", </p>
-<p class="p1">      timing: "During exercise", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/lytes",  // Correct link</p>
-<p class="p1">      description: "Electrolytes to replenish minerals and keep you hydrated during workouts.",</p>
-<p class="p1">      ingredients: "Sodium, Potassium, Magnesium"</p>
-<p class="p1">    },</p>
-<p class="p1">    { </p>
-<p class="p1">      name: "Hydration Stack", </p>
-<p class="p1">      dosage: "All-in-one bundle", </p>
-<p class="p1">      timing: "Any time", </p>
-<p class="p1">      link: "https://stealthlabzsupps.com/products/hydration-stack",  // Correct link</p>
-<p class="p1">      description: "Perfect bundle for staying hydrated during intense workouts. **Get 14% off when you purchase the full stack!**",</p>
-<p class="p1">      ingredients: "Elevate, Lytes"</p>
-<p class="p1">    }</p>
-<p class="p1">  ]</p>
-<p class="p1">};</p>
-<p class="p2"><br></p>
-<p class="p1">// Event listener to handle form submission and display the correct stack</p>
-<p class="p1">document.getElementById('stackForm').addEventListener('submit', function (e) {</p>
-<p class="p1">  e.preventDefault();</p>
-<p class="p1">  const stackChoice = document.getElementById('stack').value;</p>
-<p class="p1">  const resultsDiv = document.getElementById('results');</p>
-<p class="p1">  const stack = supplementStacks[stackChoice];</p>
-<p class="p2"><br></p>
-<p class="p1">  let stackHtml = &lt;h3&gt;Recommended Stack for ${stackChoice.replace(/([A-Z])/g, ' $1').toUpperCase()}:&lt;/h3&gt;;</p>
-<p class="p2"><br></p>
-<p class="p1">  stack.forEach(supp =&gt; {</p>
-<p class="p1">    stackHtml += </p>
-<p class="p1">      &lt;div class="supplement-info"&gt;</p>
-<p class="p1">        &lt;h3&gt;${supp.name}&lt;/h3&gt;</p>
-<p class="p1">        &lt;p&gt;&lt;strong&gt;Dosage:&lt;/strong&gt; ${supp.dosage}&lt;/p&gt;</p>
-<p class="p1">        &lt;p&gt;&lt;strong&gt;Timing:&lt;/strong&gt; ${supp.timing}&lt;/p&gt;</p>
-<p class="p1">        &lt;p&gt;&lt;strong&gt;Description:&lt;/strong&gt; ${supp.description}&lt;/p&gt;</p>
-<p class="p1">        &lt;p&gt;&lt;strong&gt;Ingredients:&lt;/strong&gt; ${supp.ingredients}&lt;/p&gt;</p>
-<p class="p1">        &lt;a href="${supp.link}" target="_blank" class="buy-button"&gt;&lt;button class="custom-btn custom-btn-primary"&gt;Buy Now&lt;/button&gt;&lt;/a&gt;</p>
-<p class="p1">      &lt;/div&gt;</p>
-<p class="p1">    ;</p>
-<p class="p1">  });</p>
-<p class="p2"><br></p>
-<p class="p1">  resultsDiv.innerHTML = stackHtml;</p>
-<p class="p1">});</p>
-<p class="p1">  &lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
-</html>
+<div id="calculator-container" class="custom-calculator-container">
+  <!-- Form to choose stack -->
+  <form id="stackForm" class="custom-form">
+    <label for="stack" class="custom-label">Choose your supplement stack:</label>
+    <select id="stack" class="custom-select">
+      <option value="muscleBuilding">Muscle Building</option>
+      <option value="fatBurning">Fat Burning</option>
+      <option value="ultimateHydration">Ultimate Hydration</option>
+    </select>
+    <button type="submit" class="custom-btn custom-btn-primary">Get Stack</button>
+  </form>
+
+  <div id="results" class="custom-results"></div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+  /* Custom Container Styling */
+  .custom-calculator-container {
+    background-color: #101010;
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Title */
+  .custom-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-family: 'Prestige', sans-serif; /* Matches theme font */
+    color: #ff5722; /* Accent color */
+  }
+
+  /* Form Styling */
+  .custom-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .custom-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .custom-select {
+    padding: 0.75rem;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px;
+    background-color: #333;
+    color: #fff;
+  }
+
+  /* Button Styling */
+  .custom-btn {
+    background-color: #ff5722;
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    border: none;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
+  }
+
+  .custom-btn:hover {
+    background-color: #e64a19;
+  }
+
+  /* Results Section */
+  .custom-results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #222;
+    border-radius: 8px;
+    border: 1px solid #444;
+  }
+
+  .supplement-info {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #333;
+  }
+
+  .supplement-info h3 {
+    margin-bottom: 10px;
+  }
+
+  .supplement-info p {
+    margin: 5px 0;
+  }
+
+  /* Ensure buttons are inside their div containers */
+  .buy-button {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
+  /* Mobile Friendly: Stack the form elements vertically */
+  @media screen and (max-width: 768px) {
+    .custom-form {
+      width: 100%;
+      padding: 0 15px;
+    }
+
+    .custom-select,
+    .custom-btn {
+      width: 100%; /* Ensures full width */
+    }
+  }
+
+  /* Menu Color and Custom Styling (for Mobile & Desktop) */
+  @media screen and (max-width: 768px) {
+    .site-header {
+      background-color: #101010; /* Dark header for mobile */
+    }
+
+    .site-nav__link {
+      color: #ff5722; /* Custom accent color for links */
+    }
+
+    .site-header .site-announcement {
+      background-color: #333; /* Announcement bar background */
+      color: #ff5722; /* Announcement text color */
+      font-size: 14px;
+      text-align: center;
+      padding: 10px;
+    }
+  }
+</style>
+
+<!-- JavaScript for stack selection -->
+<script>
+  const supplementStacks = {
+  muscleBuilding: [
+    { 
+      name: "Surge Pre-Workout", 
+      dosage: "1 scoop", 
+      timing: "Pre-workout", 
+      link: "https://stealthlabzsupps.com/products/surge-pre-workout-by-stealthlabz",  // Correct link
+      description: "Boost energy, endurance, and focus with Surge Pre-Workout.",
+      ingredients: "Caffeine, Beta-Alanine, Creatine"
+    },
+    { 
+      name: "Elevate", 
+      dosage: "20-30g", 
+      timing: "Post-workout", 
+      link: "https://stealthlabzsupps.com/products/elevate",  // Correct link
+      description: "High-quality whey protein isolate to promote muscle recovery and growth.",
+      ingredients: "Whey Protein Isolate"
+    },
+    { 
+      name: "Iso Pro", 
+      dosage: "1 scoop (20-25g)", 
+      timing: "Post-workout or as a meal supplement", 
+      link: "https://stealthlabzsupps.com/products/iso-pro",  // Correct link
+      description: "Premium protein isolate for muscle recovery and lean muscle growth.",
+      ingredients: "Whey Protein Isolate, BCAAs"
+    },
+    { 
+      name: "Muscle Building Stack", 
+      dosage: "All-in-one bundle", 
+      timing: "Any time", 
+      link: "https://stealthlabzsupps.com/products/muscle-building-stack",  // Correct link
+      description: "The ultimate muscle-building stack including pre-workout, protein, and more. **Get 14% off when you purchase the full stack!**",
+      ingredients: "Surge Pre-Workout, Elevate, Iso Pro"
+    }
+  ],
+  fatBurning: [
+    { 
+      name: "Elevate", 
+      dosage: "20-30g", 
+      timing: "Post-workout", 
+      link: "https://stealthlabzsupps.com/products/elevate",  // Correct link
+      description: "Whey protein isolate to help with fat loss and muscle preservation.",
+      ingredients: "Whey Protein Isolate"
+    },
+    { 
+      name: "Shred", 
+      dosage: "1 capsule", 
+      timing: "Before workouts", 
+      link: "https://stealthlabzsupps.com/products/shred",  // Correct link
+      description: "Fat-burning thermogenic to boost metabolism and accelerate fat loss.",
+      ingredients: "Caffeine, Green Tea Extract, Yohimbine"
+    },
+    { 
+      name: "Iso Pro", 
+      dosage: "1 scoop (20-25g)", 
+      timing: "Post-workout or as a meal supplement", 
+      link: "https://stealthlabzsupps.com/products/iso-pro",  // Correct link
+      description: "Premium protein isolate for muscle recovery and lean muscle growth.",
+      ingredients: "Whey Protein Isolate, BCAAs"
+    },
+    { 
+      name: "Fat Burning Stack", 
+      dosage: "All-in-one bundle", 
+      timing: "Any time", 
+      link: "https://stealthlabzsupps.com/products/fat-burning-stack",  // Correct link
+      description: "Complete fat-burning stack to boost metabolism and reduce fat. **Get 14% off when you purchase the full stack!**",
+      ingredients: "Elevate, Shred, Iso Pro"
+    }
+  ],
+  ultimateHydration: [
+    { 
+      name: "Elevate", 
+      dosage: "20-30g", 
+      timing: "Post-workout", 
+      link: "https://stealthlabzsupps.com/products/elevate",  // Correct link
+      description: "Whey protein isolate to assist with hydration and muscle recovery.",
+      ingredients: "Whey Protein Isolate"
+    },
+    { 
+      name: "Lytes", 
+      dosage: "As needed", 
+      timing: "During exercise", 
+      link: "https://stealthlabzsupps.com/products/lytes",  // Correct link
+      description: "Electrolytes to replenish minerals and keep you hydrated during workouts.",
+      ingredients: "Sodium, Potassium, Magnesium"
+    },
+    { 
+      name: "Hydration Stack", 
+      dosage: "All-in-one bundle", 
+      timing: "Any time", 
+      link: "https://stealthlabzsupps.com/products/hydration-stack",  // Correct link
+      description: "Perfect bundle for staying hydrated during intense workouts. **Get 14% off when you purchase the full stack!**",
+      ingredients: "Elevate, Lytes"
+    }
+  ]
+};
+
+// Event listener to handle form submission and display the correct stack
+document.getElementById('stackForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const stackChoice = document.getElementById('stack').value;
+  const resultsDiv = document.getElementById('results');
+  const stack = supplementStacks[stackChoice];
+
+  let stackHtml = `<h3>Recommended Stack for ${stackChoice.replace(/([A-Z])/g, ' $1').toUpperCase()}:</h3>`;
+
+  stack.forEach(supp => {
+    stackHtml += `
+      <div class="supplement-info">
+        <h3>${supp.name}</h3>
+        <p><strong>Dosage:</strong> ${supp.dosage}</p>
+        <p><strong>Timing:</strong> ${supp.timing}</p>
+        <p><strong>Description:</strong> ${supp.description}</p>
+        <p><strong>Ingredients:</strong> ${supp.ingredients}</p>
+        <a href="${supp.link}" target="_blank" class="buy-button"><button class="custom-btn custom-btn-primary">Buy Now</button></a>
+      </div>
+    `;
+  });
+
+  resultsDiv.innerHTML = stackHtml;
+});
+
+
+</script>
