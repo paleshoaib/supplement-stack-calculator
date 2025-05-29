@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supplement Stack Calculator</title>
+  <style>
+    /* Custom Container Styling */
+    .custom-calculator-container {
+      background-color: #101010;
+      color: #fff;
+      padding: 10px;
+      border-radius: 15px;
+      border: 1px solid #333;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Title */
+    .custom-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-family: 'Prestige', sans-serif;
+      color: #ff5722;
+    }
+
+    /* Form Styling */
+    .custom-form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .custom-label {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .custom-select {
+      padding: 0.75rem;
+      border-radius: 5px;
+      font-size: 16px;
+      margin: 10px 0;
+      width: 100%;
+      max-width: 400px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* Button Styling */
+    .custom-btn {
+      background-color: #ff5722;
+      color: #fff;
+      font-size: 14px;
+      font-weight: normal;
+      padding: 8px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      border: none;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .custom-btn:hover {
+      background-color: #e64a19;
+    }
+
+    /* Results Section */
+    .custom-results {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #222;
+      border-radius: 8px;
+      border: 1px solid #444;
+    }
+
+    .supplement-info {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #333;
+    }
+
+    .supplement-info h3 {
+      margin-bottom: 10px;
+    }
+
+    .supplement-info p {
+      margin: 5px 0;
+    }
+
+    /* Ensure buttons are inside their div containers */
+    .buy-button {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    /* Mobile Friendly */
+    @media screen and (max-width: 768px) {
+      .custom-form {
+        width: 100%;
+        padding: 0 15px;
+      }
+
+      .custom-select,
+      .custom-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator-container" class="custom-calculator-container">
+    <form id="stackForm" class="custom-form">
+      <label for="stack" class="custom-label">Choose your supplement stack:</label>
+      <select id="stack" class="custom-select">
+        <option value="muscleBuilding">Muscle Building</option>
+        <option value="fatBurning">Fat Burning</option>
+        <option value="ultimateHydration">Ultimate Hydration</option>
+      </select>
+      <button type="submit" class="custom-btn custom-btn-primary">Get Stack</button>
+    </form>
+
+    <div id="results" class="custom-results"></div>
+  </div>
+
+  <script>
+    const supplementStacks = {
+      muscleBuilding: [
+        { 
+          name: "Surge Pre-Workout", 
+          dosage: "1 scoop", 
+          timing: "Pre-workout", 
+          link: "https://stealthlabzsupps.com/products/surge-pre-workout-by-stealthlabz",
+          description: "Boost energy, endurance, and focus with Surge Pre-Workout.",
+          ingredients: "Caffeine, Beta-Alanine, Creatine"
+        },
+        { 
+          name: "Elevate", 
+          dosage: "20-30g", 
+          timing: "Post-workout", 
+          link: "https://stealthlabzsupps.com/products/elevate",
+          description: "High-quality whey protein isolate to promote muscle recovery and growth.",
+          ingredients: "Whey Protein Isolate"
+        },
+        { 
+          name: "Iso Pro", 
+          dosage: "1 scoop (20-25g)", 
+          timing: "Post-workout or as a meal supplement", 
+          link: "https://stealthlabzsupps.com/products/iso-pro",
+          description: "Premium protein isolate for muscle recovery and lean muscle growth.",
+          ingredients: "Whey Protein Isolate, BCAAs"
+        },
+        { 
+          name: "Muscle Building Stack", 
+          dosage: "All-in-one bundle", 
+          timing: "Any time", 
+          link: "https://stealthlabzsupps.com/products/muscle-building-stack",
+          description: "The ultimate muscle-building stack including pre-workout, protein, and more. **Get 14% off when you purchase the full stack!**",
+          ingredients: "Surge Pre-Workout, Elevate, Iso Pro"
+        }
+      ],
+      fatBurning: [
+        { 
+          name: "Elevate", 
+          dosage: "20-30g", 
+          timing: "Post-workout", 
+          link: "https://stealthlabzsupps.com/products/elevate",
+          description: "Whey protein isolate to help with fat loss and muscle preservation.",
+          ingredients: "Whey Protein Isolate"
+        },
+        { 
+          name: "Shred", 
+          dosage: "1 capsule", 
+          timing: "Before workouts", 
+          link: "https://stealthlabzsupps.com/products/shred",
+          description: "Fat-burning thermogenic to boost metabolism and accelerate fat loss.",
+          ingredients: "Caffeine, Green Tea Extract, Yohimbine"
+        },
+        { 
+          name: "Iso Pro", 
+          dosage: "1 scoop (20-25g)", 
+          timing: "Post-workout or as a meal supplement", 
+          link: "https://stealthlabzsupps.com/products/iso-pro",
+          description: "Premium protein isolate for muscle recovery and lean muscle growth.",
+          ingredients: "Whey Protein Isolate, BCAAs"
+        },
+        { 
+          name: "Fat Burning Stack", 
+          dosage: "All-in-one bundle", 
+          timing: "Any time", 
+          link: "https://stealthlabzsupps.com/products/fat-burning-stack",
+          description: "Complete fat-burning stack to boost metabolism and reduce fat. **Get 14% off when you purchase the full stack!**",
+          ingredients: "Elevate, Shred, Iso Pro"
+        }
+      ],
+      ultimateHydration: [
+        { 
+          name: "Elevate", 
+          dosage: "20-30g", 
+          timing: "Post-workout", 
+          link: "https://stealthlabzsupps.com/products/elevate",
+          description: "Whey protein isolate to assist with hydration and muscle recovery.",
+          ingredients: "Whey Protein Isolate"
+        },
+        { 
+          name: "Lytes", 
+          dosage: "As needed", 
+          timing: "During exercise", 
+          link: "https://stealthlabzsupps.com/products/lytes",
+          description: "Electrolytes to replenish minerals and keep you hydrated during workouts.",
+          ingredients: "Sodium, Potassium, Magnesium"
+        },
+        { 
+          name: "Hydration Stack", 
+          dosage: "All-in-one bundle", 
+          timing: "Any time", 
+          link: "https://stealthlabzsupps.com/products/hydration-stack",
+          description: "Perfect bundle for staying hydrated during intense workouts. **Get 14% off when you purchase the full stack!**",
+          ingredients: "Elevate, Lytes"
+        }
+      ]
+    };
+
+    document.getElementById('stackForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const stackChoice = document.getElementById('stack').value;
+      const resultsDiv = document.getElementById('results');
+      const stack = supplementStacks[stackChoice];
+
+      let stackHtml = `<h3>Recommended Stack for ${stackChoice.replace(/([A-Z])/g, ' $1').toUpperCase()}:</h3>`;
+
+      stack.forEach(supp => {
+        stackHtml += `
+          <div class="supplement-info">
+            <h3>${supp.name}</h3>
+            <p><strong>Dosage:</strong> ${supp.dosage}</p>
+            <p><strong>Timing:</strong> ${supp.timing}</p>
+            <p><strong>Description:</strong> ${supp.description}</p>
+            <p><strong>Ingredients:</strong> ${supp.ingredients}</p>
+            <a href="${supp.link}" target="_blank" class="buy-button">
+              <button class="custom-btn custom-btn-primary">Buy Now</button>
+            </a>
+          </div>
+        `;
+      });
+
+      resultsDiv.innerHTML = stackHtml;
+
+      // Resize iframe after updating results
+      setTimeout(() => {
+        const height = document.documentElement.scrollHeight;
+        parent.postMessage({ iframeHeight: height }, '*');
+      }, 100);
+    });
+
+    // Initial resize on page load
+    window.addEventListener('load', () => {
+      const height = document.documentElement.scrollHeight;
+      parent.postMessage({ iframeHeight: height }, '*');
+    });
+
+    // Resize on window resize
+    window.addEventListener('resize', () => {
+      const height = document.documentElement.scrollHeight;
+      parent.postMessage({ iframeHeight: height }, '*');
+    });
+  </script>
+</body>
+</html>
