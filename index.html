@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Supplement Stack Calculator</title>
   <style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    background-color: #101010;
+    color: #fff;
+    font-family: system-ui;
+  }
+  #calculator-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid #333;
+    background-color: #101010;
+  }
     /* Custom Container Styling */
     .custom-calculator-container {
       background-color: #101010;
@@ -278,6 +295,30 @@
       const height = document.documentElement.scrollHeight;
       parent.postMessage({ iframeHeight: height }, '*');
     });
+
+
+
+
+  function sendHeight() {
+  const height = document.documentElement.scrollHeight;
+  parent.postMessage({ iframeHeight: height }, '*');
+}
+
+// Send height after page load
+window.addEventListener('load', sendHeight);
+
+// Send height after window resize
+window.addEventListener('resize', sendHeight);
+
+// Also send height after results update
+document.getElementById('stackForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  // your existing code to show results...
+
+  // Wait a bit then send height again
+  setTimeout(sendHeight, 100);
+});
+
   </script>
 </body>
 </html>
